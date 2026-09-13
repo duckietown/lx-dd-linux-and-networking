@@ -1,0 +1,26 @@
+{
+  "checkpoints": [
+    {
+      "id": "host-key-verification",
+      "question": "What must be verified before accepting an SSH host key for the first time or after it changes?",
+      "model_answer": "The host-key fingerprint must match a fingerprint recorded during provisioning or confirmed by the device owner or an appropriate support contact. An unexpected change can indicate re-provisioning or a security issue.",
+      "evidence": [
+        {
+            "label": "Open an authorized SSH session",
+            "anchor": "#open-an-authorized-ssh-session"
+        }
+      ]
+    },
+    {
+      "id": "ssh-copy-id-public-key",
+      "question": "Why does `ssh-copy-id` install a public key rather than a private key?",
+      "model_answer": "The public key is installed for authentication, while the private key stays on the base station and must never be copied or shared.",
+      "evidence": [
+        {
+          "label": "Install one personal public key",
+          "anchor": "#install-one-personal-public-key"
+        }
+      ]
+    }
+  ]
+}

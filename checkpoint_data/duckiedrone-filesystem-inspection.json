@@ -1,0 +1,26 @@
+{
+  "checkpoints": [
+    {
+      "id": "filesystem-locations",
+      "question": "Which locations are appropriate for normal code, device data, and temporary files?",
+      "model_answer": "`/code` is for source code, `/data` is for device configuration and logs, and `/tmp` is for temporary files.",
+      "evidence": [
+        {
+          "label": "Inspect filesystem landmarks",
+          "anchor": "#inspect-filesystem-landmarks"
+        }
+      ]
+    },
+    {
+      "id": "user-context-difference",
+      "question": "Why can `whoami` differ between a physical SSH shell and a virtual Duckiedrone shell?",
+      "model_answer": "A physical Duckiedrone SSH session normally uses the `duckie` account. A shell from `dts duckiebot virtual connect` can start as `root` because of the virtual-device configuration.",
+      "evidence": [
+        {
+          "label": "Notice the user context",
+          "anchor": "#notice-the-user-context"
+        }
+      ]
+    }
+  ]
+}

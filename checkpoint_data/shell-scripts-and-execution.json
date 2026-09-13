@@ -1,0 +1,37 @@
+{
+  "checkpoints": [
+    {
+      "id": "chmod-executable",
+      "question": "What does `chmod u+x greeting.sh` change?",
+      "model_answer": "It gives the file owner permission to execute the script by adding the `x` permission for the user.",
+      "evidence": [
+        {
+          "label": "Create and run a trusted script",
+          "anchor": "#create-and-run-a-trusted-script"
+        }
+      ]
+    },
+    {
+      "id": "dot-slash-prefix",
+      "question": "Why does `./greeting.sh` include `./`?",
+      "model_answer": "The `./` prefix explicitly names the file in the current directory. The shell does not normally search the current directory for commands.",
+      "evidence": [
+        {
+          "label": "Create and run a trusted script",
+          "anchor": "#create-and-run-a-trusted-script"
+        }
+      ]
+    },
+    {
+      "id": "bash-versus-source",
+      "question": "`trusted_environment.sh` assigns `LX_MESSAGE=\"Shell setup complete\"`. Why is `LX_MESSAGE` set in your current shell after `source ./trusted_environment.sh` but not after `bash trusted_environment.sh`?",
+      "model_answer": "`source` runs the assignment in the current shell, so `LX_MESSAGE` remains set there. Running `bash` starts a separate process whose assignments end with that process and do not affect the parent shell.",
+      "evidence": [
+        {
+          "label": "Run versus source",
+          "anchor": "#run-versus-source"
+        }
+      ]
+    }
+  ]
+}

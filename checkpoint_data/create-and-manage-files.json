@@ -1,0 +1,37 @@
+{
+  "checkpoints": [
+    {
+      "id": "output-redirection-difference",
+      "question": "How do `>` and `>>` differ when used with output redirection?",
+      "model_answer": "`>` replaces the entire contents of a file, while `>>` appends text without replacing existing contents.",
+      "evidence": [
+        {
+          "label": "Create and inspect files",
+          "anchor": "#create-and-inspect-files"
+        }
+      ]
+    },
+    {
+      "id": "file-inspection-commands",
+      "question": "Which commands show the first lines, last line, and line count of a file?",
+      "model_answer": "`head` displays the first lines, `tail` displays the last lines, and `wc` counts lines.",
+      "evidence": [
+        {
+          "label": "Create and inspect files",
+          "anchor": "#create-and-inspect-files"
+        }
+      ]
+    },
+    {
+      "id": "rm-risk",
+      "question": "Why is `rm *` unsafe outside a controlled temporary directory?",
+      "model_answer": "`rm` removes files immediately. A wildcard such as `*` matches all files in the current directory, which could delete important files when used in the wrong location.",
+      "evidence": [
+        {
+          "label": "Copy, move, and remove files",
+          "anchor": "#copy-move-and-remove-files"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "checkpoints": [
+    {
+      "id": "mdns-guest-network",
+      "question": "Why might `DUCKIEDRONE_NAME.local` fail on a guest Wi-Fi network, where `DUCKIEDRONE_NAME` is the name of your Duckiedrone?",
+      "model_answer": "mDNS uses multicast traffic. Guest networks, enterprise Wi-Fi, and separate virtual LANs can block multicast, preventing the name from resolving.",
+      "evidence": [
+        {
+          "label": "DNS and mDNS",
+          "anchor": "#dns-and-mdns"
+        }
+      ]
+    },
+    {
+      "id": "url-components",
+      "question": "What do the protocol, hostname, port, and path in a URL each identify?",
+      "model_answer": "The protocol selects the application layer, the hostname identifies the target computer, the port identifies a service, and the path identifies a resource on that service.",
+      "evidence": [
+        {
+          "label": "Web URLs and trust",
+          "anchor": "#web-urls-and-trust"
+        }
+      ]
+    }
+  ]
+}

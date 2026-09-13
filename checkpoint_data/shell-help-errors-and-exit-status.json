@@ -1,0 +1,37 @@
+{
+  "checkpoints": [
+    {
+      "id": "command-location-check",
+      "question": "Which command can show whether the shell can find `python3`?",
+      "model_answer": "`command -v python3` shows what the shell would run, or indicates that the command is not found.",
+      "evidence": [
+        {
+          "label": "Recover from common errors",
+          "anchor": "#recover-from-common-errors"
+        }
+      ]
+    },
+    {
+      "id": "exit-status-meaning",
+      "question": "What does an exit status of `0` mean?",
+      "model_answer": "An exit status of `0` means the command completed successfully.",
+      "evidence": [
+        {
+          "label": "Check command results",
+          "anchor": "#check-command-results"
+        }
+      ]
+    },
+    {
+      "id": "logical-operators",
+      "question": "When would you use `&&` instead of `||`?",
+      "model_answer": "Use `&&` when the next command should run only if the previous command succeeds. Use `||` when the next command should run only if the previous command fails.",
+      "evidence": [
+        {
+          "label": "Check command results",
+          "anchor": "#check-command-results"
+        }
+      ]
+    }
+  ]
+}

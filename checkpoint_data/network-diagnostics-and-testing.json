@@ -1,0 +1,30 @@
+{
+  "checkpoints": [
+    {
+      "id": "hostname-and-ping-failure",
+      "question": "What is the difference between hostname lookup failure and failed ping?",
+      "model_answer": "Hostname lookup failure means a name cannot be resolved to an IP address. Failed ping means the name resolved but ICMP packets did not reach the target.",
+      "evidence": [
+        {
+          "label": "Resolve names and inspect routes",
+          "anchor": "#resolve-names-and-inspect-routes"
+        },
+        {
+            "label": "Test reachability with a local listener",
+            "anchor": "#test-reachability-with-a-local-listener"
+        }
+      ]
+    },
+    {
+      "id": "loopback-testing",
+      "question": "Why is `127.0.0.1` useful for testing `nc`?",
+      "model_answer": "It is the loopback address on the same machine, so it avoids network, routing, and firewall variables while testing the local service itself.",
+      "evidence": [
+        {
+            "label": "Test reachability with a local listener",
+            "anchor": "#test-reachability-with-a-local-listener"
+        }
+      ]
+    }
+  ]
+}

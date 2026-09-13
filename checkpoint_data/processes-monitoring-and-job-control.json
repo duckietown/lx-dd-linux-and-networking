@@ -1,0 +1,26 @@
+{
+  "checkpoints": [
+    {
+      "id": "background-process-id",
+      "question": "What does `$!` contain after starting a command with `&`?",
+      "model_answer": "`$!` contains the process identifier, or PID, of the most recent background process.",
+      "evidence": [
+        {
+          "label": "Start, inspect, and stop a controlled process",
+          "anchor": "#start-inspect-and-stop-a-controlled-process"
+        }
+      ]
+    },
+    {
+      "id": "job-control-commands",
+      "question": "What do `jobs -l`, `fg`, and `wait` each help you do?",
+      "model_answer": "`jobs -l` lists background jobs and their PIDs, `fg` brings a background job to the foreground, and `wait` pauses until a specified process finishes.",
+      "evidence": [
+        {
+          "label": "Start, inspect, and stop a controlled process",
+          "anchor": "#start-inspect-and-stop-a-controlled-process"
+        }
+      ]
+    }
+  ]
+}

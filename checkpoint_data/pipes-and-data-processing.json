@@ -1,0 +1,26 @@
+{
+  "checkpoints": [
+    {
+      "id": "pipe-stdout",
+      "question": "Which stream leaves the command on the left side of `|`?",
+      "model_answer": "Standard output, or `stdout`, from the command on the left is sent to the command on the right through the pipe.",
+      "evidence": [
+        {
+          "label": "Send text to another command",
+          "anchor": "#send-text-to-another-command"
+        }
+      ]
+    },
+    {
+      "id": "pipeline-data-flow",
+      "question": "What data reaches `sort` in `cat fruit.txt | grep 'a' | sort`?",
+      "model_answer": "Only lines from `fruit.txt` that contain `a` reach `sort`, because `grep 'a'` filters out nonmatching lines.",
+      "evidence": [
+        {
+          "label": "Compose a short processing pipeline",
+          "anchor": "#compose-a-short-processing-pipeline"
+        }
+      ]
+    }
+  ]
+}

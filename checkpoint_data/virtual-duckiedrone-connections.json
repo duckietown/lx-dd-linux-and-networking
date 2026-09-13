@@ -1,0 +1,26 @@
+{
+  "checkpoints": [
+    {
+      "id": "dd24-configuration",
+      "question": "What does literal `-c DD24` select in the create command?",
+      "model_answer": "It selects the DD24 configuration for the virtual Duckiedrone, including the applicable hardware configuration and software packages.",
+      "evidence": [
+        {
+          "label": "Create a virtual Duckiedrone",
+          "anchor": "#create-a-virtual-duckiedrone"
+        }
+      ]
+    },
+    {
+      "id": "virtual-connect-behavior",
+      "question": "What does `dts duckiebot virtual connect DUCKIEDRONE_NAME` do, where `DUCKIEDRONE_NAME` is the name of your virtual Duckiedrone?",
+      "model_answer": "It checks for the requested virtual Duckiedrone and opens an interactive Bash shell inside it.",
+      "evidence": [
+        {
+          "label": "List, start, and connect",
+          "anchor": "#list-start-and-connect"
+        }
+      ]
+    }
+  ]
+}

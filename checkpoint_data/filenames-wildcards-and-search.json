@@ -1,0 +1,26 @@
+{
+  "checkpoints": [
+    {
+      "id": "wildcard-difference",
+      "question": "How does `report_?.txt` differ from `report_*.txt`?",
+      "model_answer": "`report_?.txt` matches exactly one character where the `?` appears, so it matches `report_1.txt` but not `report_10.txt`. The `*` wildcard matches zero or more characters.",
+      "evidence": [
+        {
+          "label": "Match names with wildcards",
+          "anchor": "#match-names-with-wildcards"
+        }
+      ]
+    },
+    {
+      "id": "find-wildcard-quoting",
+      "question": "Why is the wildcard quoted in `find . -name 'report_*.txt'`?",
+      "model_answer": "Quoting prevents the shell from expanding the wildcard before `find` receives it, so `find` evaluates the pattern itself.",
+      "evidence": [
+        {
+          "label": "Find files and search text",
+          "anchor": "#find-files-and-search-text"
+        }
+      ]
+    }
+  ]
+}
