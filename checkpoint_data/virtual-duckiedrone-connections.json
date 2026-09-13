@@ -1,0 +1,59 @@
+{
+  "checkpoints": [
+    {
+      "id": "dd24-configuration",
+      "question": "What does literal `-c DD24` select in the create command?",
+      "model_answer": "It selects the DD24 configuration for the virtual Duckiedrone, which determines its compatible platform profile and software stack.",
+      "evidence": [
+        {
+          "label": "Create a virtual Duckiedrone",
+          "anchor": "#create-a-virtual-duckiedrone"
+        }
+      ]
+    },
+    {
+      "id": "virtual-connect-behavior",
+      "question": "What does `dts duckiebot virtual connect DUCKIEDRONE_NAME` do, where `DUCKIEDRONE_NAME` is the name of your virtual Duckiedrone?",
+      "model_answer": "It verifies that the named virtual Duckiedrone is running, then opens an interactive Bash shell on it.",
+      "evidence": [
+        {
+          "label": "List, start, and connect",
+          "anchor": "#list-start-and-connect"
+        }
+      ]
+    },
+    {
+      "id": "virtual-device-readiness",
+      "question": "What should you do before connecting to an existing virtual Duckiedrone?",
+      "model_answer": "Use `dts duckiebot virtual list` to inspect its status. If `DUCKIEDRONE_NAME` is not already running, start it before connecting.",
+      "evidence": [
+        {
+          "label": "List, start, and connect",
+          "anchor": "#list-start-and-connect"
+        }
+      ]
+    },
+    {
+      "id": "virtual-device-stop",
+      "question": "How do you stop a running virtual Duckiedrone when you no longer need it?",
+      "model_answer": "From the base-station terminal, run `dts duckiebot virtual stop DUCKIEDRONE_NAME`, where `DUCKIEDRONE_NAME` is the name of your virtual Duckiedrone, then use `dts duckiebot virtual list` to confirm its status.",
+      "evidence": [
+        {
+          "label": "Stop a virtual Duckiedrone",
+          "anchor": "#stop-a-virtual-duckiedrone"
+        }
+      ]
+    },
+    {
+      "id": "virtual-device-name-and-password",
+      "question": "What does `DUCKIEDRONE_NAME` represent, and where should you enter the password during virtual Duckiedrone creation?",
+      "model_answer": "It is the name of the virtual Duckiedrone. Enter a personal password of at least eight characters only at the interactive prompts, not in a notebook, command, shell history, chat message, or source file.",
+      "evidence": [
+        {
+          "label": "Create a virtual Duckiedrone",
+          "anchor": "#create-a-virtual-duckiedrone"
+        }
+      ]
+    }
+  ]
+}

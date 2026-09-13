@@ -1,0 +1,26 @@
+{
+  "checkpoints": [
+    {
+      "id": "localhost-context",
+      "question": "Why can `localhost` name a different system when the same command text runs elsewhere?",
+      "model_answer": "The current network context determines `localhost`: a base-station shell refers to the base station, while a shell on either a physical or virtual Duckiedrone refers to that Duckiedrone. A service shell refers to its own service environment.",
+      "evidence": [
+        {
+          "label": "Identify the current network context",
+          "anchor": "#identify-the-current-network-context"
+        }
+      ]
+    },
+    {
+      "id": "service-binding-failure",
+      "question": "Why can a service respond at `127.0.0.1:PORT` but not at `DUCKIEDRONE_NAME.local:PORT`, where `PORT` is the documented port number for the service and `DUCKIEDRONE_NAME` is the name of your Duckiedrone?",
+      "model_answer": "A service bound to `127.0.0.1` accepts connections only from the same network context. A request from another computer arrives through a different network interface.",
+      "evidence": [
+        {
+          "label": "Service binding",
+          "anchor": "#service-binding"
+        }
+      ]
+    }
+  ]
+}

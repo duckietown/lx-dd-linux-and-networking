@@ -1,0 +1,41 @@
+{
+  "checkpoints": [
+    {
+      "id": "mac-and-ip-addresses",
+      "question": "What is the practical difference between a MAC address and an IP address?",
+      "model_answer": "A MAC address identifies an interface on its local connection. An IP address identifies an interface within an IP network and lets routers deliver packets beyond one local connection.",
+      "evidence": [
+        {
+          "label": "Interfaces and identifiers",
+          "anchor": "#interfaces-and-identifiers"
+        }
+      ]
+    },
+    {
+      "id": "subnet-prefix",
+      "question": "What does the `/24` in `192.168.1.42/24` describe?",
+      "model_answer": "It is the subnet prefix: the first 24 bits identify the local network and the remaining 8 bits identify a device in that subnet.",
+      "evidence": [
+        {
+          "label": "IPv4 subnets and gateways",
+          "anchor": "#ipv4-subnets-and-gateways"
+        }
+      ]
+    },
+    {
+      "id": "ipv6-loopback-and-link-local",
+      "question": "What do `::1` and an address beginning with `fe80::` each represent?",
+      "model_answer": "`::1` is the IPv6 loopback address. An address beginning with `fe80::` is link-local, so it works only on the current local connection and cannot cross a router.",
+      "evidence": [
+        {
+          "label": "Interfaces and identifiers",
+          "anchor": "#interfaces-and-identifiers"
+        },
+        {
+          "label": "IPv6 alongside IPv4",
+          "anchor": "#ipv6-alongside-ipv4"
+        }
+      ]
+    }
+  ]
+}

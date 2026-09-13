@@ -1,0 +1,37 @@
+{
+  "checkpoints": [
+    {
+      "id": "filesystem-locations",
+      "question": "Which locations are used for synchronized source code, device data, and temporary files?",
+      "model_answer": "`/code` can hold synchronized source code, `/data` contains Duckiedrone configuration, logs, recordings, stacks, and other device and service data, and `/tmp` is for temporary files.",
+      "evidence": [
+        {
+          "label": "Inspect filesystem landmarks",
+          "anchor": "#inspect-filesystem-landmarks"
+        }
+      ]
+    },
+    {
+      "id": "user-context-difference",
+      "question": "Why can `whoami` differ between a shell on a physical Duckiedrone accessed with SSH and a shell on a virtual Duckiedrone?",
+      "model_answer": "The connection methods can use different default accounts: an SSH session on a physical Duckiedrone normally uses `duckie`, while the virtual connection workflow can enter as `root`.",
+      "evidence": [
+        {
+          "label": "Notice the user context",
+          "anchor": "#notice-the-user-context"
+        }
+      ]
+    },
+    {
+      "id": "sensitive-paths",
+      "question": "Which paths should not be inspected in this notebook, and how should you handle authorized listing output?",
+      "model_answer": "Do not inspect `/secrets`, `/root`, or the contents of `/data/config`, because they can contain sensitive or device-specific information. Limit observation to authorized paths and metadata, and review and redact sensitive values before sharing output or screenshots.",
+      "evidence": [
+        {
+          "label": "Notice the user context",
+          "anchor": "#notice-the-user-context"
+        }
+      ]
+    }
+  ]
+}
