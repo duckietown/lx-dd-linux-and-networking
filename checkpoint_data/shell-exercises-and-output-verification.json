@@ -1,0 +1,26 @@
+{
+  "checkpoints": [
+    {
+      "id": "ctrl-d-versus-ctrl-c",
+      "question": "What is the difference between `Ctrl-D` and `Ctrl-C` while `my_cat.py` reads terminal input?",
+      "model_answer": "`Ctrl-D` signals end of file, allowing the program to finish processing input. `Ctrl-C` stops the program immediately.",
+      "evidence": [
+        {
+          "label": "Complete the stream exercises",
+          "anchor": "#complete-the-stream-exercises"
+        }
+      ]
+    },
+    {
+      "id": "stream-separation",
+      "question": "What belongs in `sorted.txt` and `status.txt` after testing `my_sort_status.py`?",
+      "model_answer": "`sorted.txt` contains only sorted lines from standard output. `status.txt` contains only the program's status message from standard error.",
+      "evidence": [
+        {
+          "label": "Complete the stream exercises",
+          "anchor": "#complete-the-stream-exercises"
+        }
+      ]
+    }
+  ]
+}

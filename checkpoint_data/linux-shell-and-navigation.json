@@ -1,0 +1,48 @@
+{
+  "checkpoints": [
+    {
+      "id": "absolute-and-relative-paths",
+      "question": "What is the difference between an absolute path and a relative path?",
+      "model_answer": "An absolute path begins with `/` and is interpreted from the filesystem root, so it means the same location from every current directory. A relative path has no leading `/` and is interpreted from the current working directory.",
+      "evidence": [
+        {
+          "label": "Navigate with paths",
+          "anchor": "#navigate-with-paths"
+        }
+      ]
+    },
+    {
+      "id": "path-components",
+      "question": "What do `.` and `..` mean in a path?",
+      "choices": [
+        "`.` means the current directory; `..` means its parent directory.",
+        "`.` means the filesystem root; `..` means the home directory.",
+        "`.` means the parent directory; `..` means the current directory.",
+        "`.` and `..` are wildcard characters."
+      ],
+      "correct_choice": "`.` means the current directory; `..` means its parent directory.",
+      "model_answer": "`.` means the current directory and `..` means its parent directory. From the `drafts` directory in the example, `cd ..` moves to `notes`. The next command, `cd ../..`, starts in `notes` and ends in `/tmp`.",
+      "evidence": [
+        {
+          "label": "Navigate with paths",
+          "anchor": "#navigate-with-paths"
+        }
+      ]
+    },
+    {
+      "id": "confirm-current-directory",
+      "question": "Why should you confirm `pwd` before running a command that changes files?",
+      "model_answer": "Many file operations use relative paths, so they act on the current working directory. Confirming `pwd` first helps prevent a command that changes files from affecting the wrong location.",
+      "evidence": [
+        {
+          "label": "Know where commands run",
+          "anchor": "#know-where-commands-run"
+        },
+        {
+          "label": "Navigate with paths",
+          "anchor": "#navigate-with-paths"
+        }
+      ]
+    }
+  ]
+}

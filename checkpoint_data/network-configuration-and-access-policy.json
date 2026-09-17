@@ -1,0 +1,26 @@
+{
+  "checkpoints": [
+    {
+      "id": "dhcp-address-change",
+      "question": "Why can a Duckiedrone's DHCP address change while its hostname remains useful?",
+      "model_answer": "DHCP leases an address for a period of time, so a reconnect or renewal can assign a new one. DNS or mDNS can resolve the hostname to the current address.",
+      "evidence": [
+        {
+            "label": "Automatic address configuration and private addresses",
+            "anchor": "#automatic-address-configuration-and-private-addresses"
+        }
+      ]
+    },
+    {
+      "id": "firewall-and-nat",
+      "question": "How does a firewall differ from NAT?",
+      "model_answer": "NAT translates addresses so multiple local devices can share a public IP address. A firewall applies traffic rules based on addresses, protocols, and ports.",
+      "evidence": [
+        {
+            "label": "NAT and firewalls",
+            "anchor": "#nat-and-firewalls"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "checkpoints": [
+    {
+      "id": "background-process-id",
+      "question": "What does `$!` contain after starting a command with `&`?",
+      "model_answer": "`$!` contains the process identifier, or PID, of the most recent background process.",
+      "evidence": [
+        {
+          "label": "Start, inspect, and stop a controlled process",
+          "anchor": "#start-inspect-and-stop-a-controlled-process"
+        }
+      ]
+    },
+    {
+      "id": "job-control-commands",
+      "question": "What do `jobs -l`, `fg`, and `wait` each help you do?",
+      "model_answer": "`jobs -l` lists background jobs and their PIDs, `fg` brings a background job to the foreground, and `wait` pauses until a specified process finishes.",
+      "evidence": [
+        {
+          "label": "Start, inspect, and stop a controlled process",
+          "anchor": "#start-inspect-and-stop-a-controlled-process"
+        }
+      ]
+    },
+    {
+      "id": "default-kill-signal",
+      "question": "What signal does `kill \"$SLEEP_PID\"` send by default, and why should it be treated as a request?",
+      "model_answer": "It sends the `SIGTERM` signal by default. A process can handle or ignore that signal, so the command requests termination rather than guaranteeing a clean shutdown.",
+      "evidence": [
+        {
+          "label": "Start, inspect, and stop a controlled process",
+          "anchor": "#start-inspect-and-stop-a-controlled-process"
+        }
+      ]
+    }
+  ]
+}

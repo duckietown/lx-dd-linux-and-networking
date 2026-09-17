@@ -1,0 +1,26 @@
+{
+  "checkpoints": [
+    {
+      "id": "quoting-behavior",
+      "question": "What changes between single and double quotes around `$PRACTICE_LABEL`?",
+      "model_answer": "Single quotes keep `$PRACTICE_LABEL` as literal text. Double quotes expand the variable to its value.",
+      "evidence": [
+        {
+          "label": "Quote values deliberately",
+          "anchor": "#quote-values-deliberately"
+        }
+      ]
+    },
+    {
+      "id": "path-variable-quoting",
+      "question": "Why should a path variable be double-quoted?",
+      "model_answer": "Double quotes preserve spaces and special characters in a path value so the shell does not split it into separate arguments.",
+      "evidence": [
+        {
+          "label": "Quote values deliberately",
+          "anchor": "#quote-values-deliberately"
+        }
+      ]
+    }
+  ]
+}

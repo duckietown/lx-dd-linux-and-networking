@@ -1,0 +1,26 @@
+{
+  "checkpoints": [
+    {
+      "id": "permission-groups",
+      "question": "What do the three permission groups in `ls -l` describe?",
+      "model_answer": "They describe permissions for the user who owns the file, the group, and other users. Each group can have read, write, and execute permissions.",
+      "evidence": [
+        {
+          "label": "Inspect and narrow permissions",
+          "anchor": "#inspect-and-narrow-permissions"
+        }
+      ]
+    },
+    {
+      "id": "execute-permission-meaning",
+      "question": "Why does `x` mean something different for a regular file and a directory?",
+      "model_answer": "The execute bit makes a regular file runnable. On a directory, it grants traversal, allowing access to entries inside it when other permissions permit.",
+      "evidence": [
+        {
+          "label": "Inspect and narrow permissions",
+          "anchor": "#inspect-and-narrow-permissions"
+        }
+      ]
+    }
+  ]
+}

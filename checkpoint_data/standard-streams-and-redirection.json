@@ -1,0 +1,30 @@
+{
+  "checkpoints": [
+    {
+      "id": "standard-output-stream",
+      "question": "Which stream carries a program's normal result?",
+      "model_answer": "Standard output, or `stdout`, carries a program's normal result.",
+      "evidence": [
+        {
+          "label": "Standard streams",
+          "anchor": "#standard-streams"
+        }
+      ]
+    },
+    {
+      "id": "redirection-operators",
+      "question": "How do `<`, `>`, `>>`, and `2>` differ?",
+      "model_answer": "`<` supplies a file as standard input. `>` replaces a file with standard output, `>>` appends standard output, and `2>` redirects standard error.",
+      "evidence": [
+        {
+          "label": "Redirect input and output",
+          "anchor": "#redirect-input-and-output"
+        },
+        {
+          "label": "Separate normal output from errors",
+          "anchor": "#separate-normal-output-from-errors"
+        }
+      ]
+    }
+  ]
+}

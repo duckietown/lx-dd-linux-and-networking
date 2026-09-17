@@ -1,0 +1,72 @@
+{
+  "checkpoints": [
+    {
+      "id": "kernel-and-distribution",
+      "question": "What is the difference between the Linux kernel and a Linux distribution?",
+      "model_answer": "The Linux kernel is the core software that manages hardware and provides system services. A Linux distribution combines that kernel with user-space tools, libraries, services, package management, and applications.",
+      "evidence": [
+        {
+          "label": "Kernel and distribution definition",
+          "anchor": "#kernel-and-distribution-definition"
+        },
+        {
+          "label": "What a distribution adds",
+          "anchor": "#what-a-distribution-adds"
+        }
+      ]
+    },
+    {
+      "id": "layered-operating-system",
+      "question": "Which layer includes the shell: the kernel or user space?",
+      "choices": [
+        "The kernel",
+        "User space"
+      ],
+      "correct_choice": "User space",
+      "model_answer": "The shell is in user space. It is a program that requests services from the privileged kernel rather than running as part of the kernel.",
+      "evidence": [
+        {
+          "label": "A layered operating system",
+          "anchor": "#a-layered-operating-system"
+        }
+      ]
+    },
+    {
+      "id": "cpu-architecture",
+      "question": "Why are CPU architecture and Linux distribution separate concepts?",
+      "model_answer": "CPU architecture describes the hardware instruction set, such as `x86_64` or `arm64`. A Linux distribution is a packaged operating system built from a kernel and user-space software. One distribution can support several CPU architectures, but a computer needs a build that matches its own architecture.",
+      "evidence": [
+        {
+            "label": "Kernel and processor architecture",
+            "anchor": "#kernel-and-processor-architecture"
+        },
+        {
+          "label": "What a distribution adds",
+          "anchor": "#what-a-distribution-adds"
+        }
+      ]
+    },
+    {
+      "id": "distribution-additions",
+      "question": "Why should an installation command be checked against the actual distribution and version?",
+      "model_answer": "Distributions and releases can differ in package formats, package commands, available versions, and configuration conventions. A command written for a different distribution or version may therefore be unavailable or inappropriate.",
+      "evidence": [
+        {
+          "label": "What a distribution adds",
+          "anchor": "#what-a-distribution-adds"
+        }
+      ]
+    },
+    {
+      "id": "current-environment-scope",
+      "question": "What do `uname -m` and `cat /etc/os-release` describe, and why are they not needed to identify a Duckiedrone platform in this LX?",
+      "model_answer": "They report the architecture and distribution information for the current shell context, which can differ between base-station, editor, and service environments. The Duckiedrone platform used in this LX is already known.",
+      "evidence": [
+        {
+          "label": "Inspect the current environment",
+          "anchor": "#inspect-the-current-environment"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "checkpoints": [
+    {
+      "id": "pipe-stdout",
+      "question": "Which stream leaves the command on the left side of `|`?",
+      "model_answer": "Standard output, or `stdout`, from the command on the left is sent to the command on the right through the pipe.",
+      "evidence": [
+        {
+          "label": "Send text to another command",
+          "anchor": "#send-text-to-another-command"
+        }
+      ]
+    },
+    {
+      "id": "pipeline-data-flow",
+      "question": "What data reaches `sort` in `grep 'e' fruit.txt | sort`?",
+      "model_answer": "Only lines from `fruit.txt` that contain `e` reach `sort`, because `grep 'e' fruit.txt` filters out nonmatching lines.",
+      "evidence": [
+        {
+          "label": "Compose a short processing pipeline",
+          "anchor": "#compose-a-short-processing-pipeline"
+        }
+      ]
+    },
+    {
+      "id": "pipeline-failure-status",
+      "question": "What does `set -o pipefail` change for a trusted Bash script pipeline?",
+      "model_answer": "Without `pipefail`, a pipeline normally reports the exit status of its last command. With `pipefail`, the pipeline reports a nonzero status when any stage fails, unless a command such as `grep` returns nonzero for an expected condition that the script handles deliberately.",
+      "evidence": [
+        {
+          "label": "Check pipeline outcomes",
+          "anchor": "#check-pipeline-outcomes"
+        }
+      ]
+    }
+  ]
+}
