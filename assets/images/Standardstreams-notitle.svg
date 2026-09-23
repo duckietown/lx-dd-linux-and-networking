@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="344" height="204" viewBox="0 0 344 204" role="img" aria-labelledby="title description">
+  <title id="title">Standard input, output, and error streams</title>
+  <desc id="description">A process exchanges standard streams with a text terminal through a keyboard and display.</desc>
+  <defs>
+    <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#000000"/>
+    </marker>
+  </defs>
+  <rect width="344" height="204" fill="#ffffff"/>
+  <rect x="209" y="16" width="123" height="172" fill="#d3d3d3"/>
+  <text x="270.5" y="36" text-anchor="middle" font-family="DejaVu Serif, serif" font-size="18" fill="#000000">text terminal</text>
+  <rect x="223" y="59" width="91" height="47" rx="20" fill="#ffffff" stroke="#000000" stroke-width="2"/>
+  <text x="268.5" y="88" text-anchor="middle" font-family="DejaVu Serif, serif" font-size="18" fill="#000000">keyboard</text>
+  <rect x="230" y="128" width="80" height="49" rx="16" fill="#ffffff" stroke="#000000" stroke-width="2"/>
+  <text x="270" y="158" text-anchor="middle" font-family="DejaVu Serif, serif" font-size="18" fill="#000000">display</text>
+  <ellipse cx="55" cy="132" rx="50" ry="23" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="55" y="138" text-anchor="middle" font-family="DejaVu Serif, serif" font-size="18" fill="#000000">process</text>
+  <path d="M 223 86 L 103 121" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  <text x="133" y="91" font-family="DejaVu Serif, serif" font-size="17" fill="#000000">#0 stdin</text>
+  <path d="M 103 137 L 229 151" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  <text x="129" y="132" font-family="DejaVu Serif, serif" font-size="17" fill="#000000">#1 stdout</text>
+  <path d="M 90 148 L 118 169 L 229 169" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  <text x="129" y="161" font-family="DejaVu Serif, serif" font-size="17" fill="#000000">#2 stderr</text>
+</svg>

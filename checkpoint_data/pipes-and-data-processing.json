@@ -25,7 +25,7 @@
     {
       "id": "pipeline-failure-status",
       "question": "What does `set -o pipefail` change for a trusted Bash script pipeline?",
-      "model_answer": "Without `pipefail`, a pipeline normally reports the exit status of its last command. With `pipefail`, the pipeline reports a nonzero status when any stage fails, unless a command such as `grep` returns nonzero for an expected condition that the script handles deliberately.",
+      "model_answer": "Without `pipefail`, a pipeline normally reports the exit status of its last command. With `pipefail`, the pipeline reports a nonzero status if any stage returns a nonzero status. Commands such as `grep` can return nonzero for an expected result, so decide whether that status should stop the script or handle it explicitly.",
       "evidence": [
         {
           "label": "Check pipeline outcomes",

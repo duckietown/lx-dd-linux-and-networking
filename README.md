@@ -20,7 +20,7 @@ After completing this learning experience, learners will be able to:
 
 ## Notebooks
 
-Start with Notebook 1, which establishes the core Linux concepts used throughout this LX. The remaining notebooks are ordered for the complete LX, but each has a focused orientation and checkpoint so it can be completed independently or used to focus on an individual concept.
+Start with [Notebook 1](./notebooks/1-linux-foundations-and-distributions.ipynb), which establishes the core Linux concepts used throughout this LX. The remaining notebooks are ordered for the complete LX, but each has a focused orientation and checkpoint so it can be completed independently or used to focus on an individual concept.
 
 | # | Notebook | Description |
 | --- | --- | --- |
@@ -57,7 +57,7 @@ Your base station is the development computer that runs Visual Studio Code (VS C
 
 | Task | Where to run it |
 | --- | --- |
-| Read and edit notebooks; complete self-contained local exercises in Notebooks 1 through 12; run Notebook 18 localhost examples | The `dts code editor` terminal or another local Linux environment chosen for this LX |
+| Read and edit notebooks; complete self-contained local exercises in Notebooks [1](./notebooks/1-linux-foundations-and-distributions.ipynb) through [12](./notebooks/12-shell-exercises-and-output-verification.ipynb); run [Notebook 18](./notebooks/18-network-diagnostics-and-testing.ipynb) localhost examples | The `dts code editor` terminal or another local Linux environment chosen for this LX |
 | Run `dts fleet discover`, `dts duckiebot virtual ...`, or physical-device `getent`, `ping`, `ssh`, and `ssh-copy-id` commands | A separate base-station terminal, outside `dts code editor` |
 | Inspect files, processes, routes, or sockets after connecting to a device | The authorized physical or virtual Duckiedrone shell |
 | Inspect a particular running service | The relevant service shell or workbench |
@@ -66,15 +66,15 @@ Keep the base-station terminal open while using the browser editor. A command's 
 
 ### Linux foundations and local practice
 
-The shell commands in Notebooks 1 through 12 run in any of those local Linux environments. They need a terminal and the LX files only; no Duckiedrone or network access is required. Interactive checkpoints require the notebook metadata supplied by `dts code editor`; a compatible Jupyter/IPython kernel with `ipywidgets` available is not sufficient by itself.
+The shell commands in Notebooks [1](./notebooks/1-linux-foundations-and-distributions.ipynb) through [12](./notebooks/12-shell-exercises-and-output-verification.ipynb) run in any of those local Linux environments. They need a terminal and the LX files only; no Duckiedrone or network access is required. Interactive checkpoints require the notebook metadata supplied by `dts code editor`; a compatible Jupyter/IPython kernel with `ipywidgets` available is not sufficient by itself.
 
 ### Networking
 
-Notebooks 13 through 17 are conceptual. Notebook 18's localhost examples are safe in the local Linux environment you chose. Run `dts fleet discover` and checks that need the base station's network path from the separate base-station terminal. Once `ssh` or `dts duckiebot virtual connect` opens a Duckiedrone shell, `localhost`, processes, routes, and sockets describe that Duckiedrone rather than the editor or base station.
+Notebooks [13](./notebooks/13-network-addressing-and-routing.ipynb) through [17](./notebooks/17-network-names-and-service-discovery.ipynb) are conceptual. [Notebook 18](./notebooks/18-network-diagnostics-and-testing.ipynb)'s localhost examples are safe in the local Linux environment you chose. Run `dts fleet discover` and checks that need the base station's network path from the separate base-station terminal. Once `ssh` or `dts duckiebot virtual connect` opens a Duckiedrone shell, `localhost`, processes, routes, and sockets describe that Duckiedrone rather than the editor or base station.
 
 ### Authorized device access
 
-Notebooks 19 through 22 require either an authorized physical Duckiedrone or an authorized virtual Duckiedrone. Physical access also needs a network path authorized by its owner or administrator and a verified Secure Shell (SSH) identity. Virtual access uses the Duckietown Shell's local virtual Duckiedrone workflow. Filesystem and process inspection starts only after one authorized device shell is open.
+Notebooks [19](./notebooks/19-physical-duckiedrone-ssh-access.ipynb) through [22](./notebooks/22-duckiedrone-process-inspection.ipynb) require either an authorized physical Duckiedrone or an authorized virtual Duckiedrone. Physical access also needs a network path authorized by its owner or administrator and a verified SSH identity. Virtual access uses the Duckietown Shell's local virtual Duckiedrone workflow. Filesystem and process inspection starts only after one authorized device shell is open.
 
 You can complete local work independently. For physical-device or network activity, use only equipment and networks you own or are explicitly authorized to administer. Follow the device owner's documentation and the network-administration policy, and contact the device owner, network administrator, or another designated support contact when you need help.
 
@@ -91,7 +91,7 @@ The notebooks explain how to run each completed script with input from the termi
 
 ## Further reading
 
-See the [GNU Bash Reference Manual](https://www.gnu.org/software/bash/manual/), the [Filesystem Hierarchy Standard 3.0](https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html), and the Internet Engineering Task Force (IETF) [IPv6 specification (RFC 8200)](https://www.rfc-editor.org/rfc/rfc8200).
+See the [GNU's Not Unix (GNU) Bash Reference Manual](https://www.gnu.org/software/bash/manual/), the [Filesystem Hierarchy Standard 3.0](https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html), and the Internet Engineering Task Force (IETF) [IPv6 specification (Request for Comments (RFC) 8200)](https://www.rfc-editor.org/rfc/rfc8200).
 
 ## For LX authors
 
