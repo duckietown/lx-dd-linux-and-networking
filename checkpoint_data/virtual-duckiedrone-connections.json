@@ -25,7 +25,7 @@
     {
       "id": "virtual-device-readiness",
       "question": "What should you do before connecting to an existing virtual Duckiedrone?",
-      "model_answer": "Use `dts duckiebot virtual list` to inspect its status. If `DUCKIEDRONE_NAME` is not already running, start it before connecting.",
+      "model_answer": "Use `dts duckiebot virtual list` to inspect its status. If it is not already running, start it before connecting.",
       "evidence": [
         {
           "label": "List, start, and connect",

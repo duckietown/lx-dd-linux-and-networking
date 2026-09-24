@@ -6,8 +6,8 @@
       "model_answer": "mDNS uses multicast traffic. Guest networks, enterprise Wi-Fi, and separate virtual LANs can block multicast, preventing the name from resolving.",
       "evidence": [
         {
-          "label": "DNS and mDNS",
-          "anchor": "#dns-and-mdns"
+          "label": "Local name resolution",
+          "anchor": "#local-name-resolution"
         }
       ]
     },
@@ -17,8 +17,19 @@
       "model_answer": "The protocol selects the application layer, the hostname identifies the target computer, the port identifies a service, and the path identifies a resource on that service.",
       "evidence": [
         {
-          "label": "Web URLs and trust",
-          "anchor": "#web-urls-and-trust"
+          "label": "Web addresses and trust",
+          "anchor": "#web-addresses-and-trust"
+        }
+      ]
+    },
+    {
+      "id": "discovery-and-name-resolution",
+      "question": "How do `getent hosts DUCKIEDRONE_NAME.local`, where `DUCKIEDRONE_NAME` is the name of your Duckiedrone, and `dts fleet discover` differ, and what does each establish?",
+      "model_answer": "`getent hosts` asks the configured name-resolution sources about one known name, so a result is name-resolution evidence. `dts fleet discover` looks for compatible local announcements and discovery responses, so a result is discovery evidence. Neither result proves that a particular service accepts a connection.",
+      "evidence": [
+        {
+          "label": "Separate the connection questions",
+          "anchor": "#separate-the-connection-questions"
         }
       ]
     }

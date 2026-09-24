@@ -21,6 +21,17 @@
           "anchor": "#ports-and-transport-protocols"
         }
       ]
+    },
+    {
+      "id": "tcp-listener-inspection",
+      "question": "What does `ss -ltn` report, and why does a successful loopback ping not establish that a TCP service is available?",
+      "model_answer": "`ss -ltn` lists TCP sockets listening in the current network context: `-l` selects listeners, `-t` selects TCP, and `-n` keeps addresses and ports numeric. A successful loopback ping is ICMP evidence only; it does not show that a TCP service is listening or reachable from another computer.",
+      "evidence": [
+        {
+          "label": "Network quality",
+          "anchor": "#network-quality"
+        }
+      ]
     }
   ]
 }

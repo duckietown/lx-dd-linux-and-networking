@@ -17,8 +17,8 @@
       "model_answer": "It is the subnet prefix: the first 24 bits identify the local network and the remaining 8 bits identify a device in that subnet.",
       "evidence": [
         {
-          "label": "IPv4 subnets and gateways",
-          "anchor": "#ipv4-subnets-and-gateways"
+          "label": "Subnets and gateways",
+          "anchor": "#subnets-and-gateways"
         }
       ]
     },
@@ -32,8 +32,8 @@
           "anchor": "#interfaces-and-identifiers"
         },
         {
-          "label": "IPv6 alongside IPv4",
-          "anchor": "#ipv6-alongside-ipv4"
+          "label": "Address families together",
+          "anchor": "#address-families-together"
         }
       ]
     }

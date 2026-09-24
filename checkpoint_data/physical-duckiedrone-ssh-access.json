@@ -3,11 +3,11 @@
     {
       "id": "host-key-verification",
       "question": "What must be verified before accepting an SSH host key for the first time or after it changes?",
-      "model_answer": "The host-key fingerprint must match a fingerprint recorded during provisioning or confirmed by the device owner or an appropriate support contact. An unexpected change can indicate re-provisioning or a security issue.",
+      "model_answer": "The host-key fingerprint must match a fingerprint recorded during provisioning or another trusted record supplied with the device. An unexpected change can indicate re-provisioning or a security issue.",
       "evidence": [
         {
-            "label": "Open an authorized SSH session",
-            "anchor": "#open-an-authorized-ssh-session"
+            "label": "Open an authorized remote session",
+            "anchor": "#open-an-authorized-remote-session"
         }
       ]
     },

@@ -43,6 +43,17 @@
           "anchor": "#navigate-with-paths"
         }
       ]
+    },
+    {
+      "id": "architecture-reporting",
+      "question": "What does `uname -m` report, and why does its result describe only the current environment?",
+      "model_answer": "It reports the machine architecture used by the running kernel, such as `aarch64` for 64-bit ARM. The result applies only to the environment where the command runs; a base station, browser editor, service environment, and Duckiedrone can report different architectures.",
+      "evidence": [
+        {
+          "label": "Know where commands run",
+          "anchor": "#know-where-commands-run"
+        }
+      ]
     }
   ]
 }

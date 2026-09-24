@@ -17,8 +17,8 @@
       "model_answer": "NAT translates addresses so multiple local devices can share a public IP address. A firewall applies traffic rules based on addresses, protocols, and ports.",
       "evidence": [
         {
-            "label": "NAT and firewalls",
-            "anchor": "#nat-and-firewalls"
+            "label": "Address translation and firewalls",
+            "anchor": "#address-translation-and-firewalls"
         }
       ]
     }

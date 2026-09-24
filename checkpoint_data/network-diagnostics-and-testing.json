@@ -17,12 +17,23 @@
     },
     {
       "id": "loopback-testing",
-      "question": "Why is `127.0.0.1` useful for testing `nc`?",
-      "model_answer": "It is the loopback address on the same machine, so it avoids network, routing, and firewall variables while testing the local service itself.",
+      "question": "Why is `127.0.0.1` useful for testing `nc` from two terminals in the same current context?",
+      "model_answer": "It is the IPv4 loopback address for the current context, so the listener and connection stay there rather than contacting another computer. This safely tests the local listener and TCP exchange, but it does not establish that another computer can reach the service.",
       "evidence": [
         {
             "label": "Test reachability with a local listener",
             "anchor": "#test-reachability-with-a-local-listener"
+        }
+      ]
+    },
+    {
+      "id": "curl-header-request",
+      "question": "What evidence does `curl --head` provide when checking one known authorized web service?",
+      "model_answer": "It requests the HTTP response headers without downloading the page body. A response status line beginning with `HTTP/` shows that a web server responded, while the status code provides application-level evidence about that response.",
+      "evidence": [
+        {
+          "label": "Test one known authorized service",
+          "anchor": "#test-one-known-authorized-service"
         }
       ]
     }
