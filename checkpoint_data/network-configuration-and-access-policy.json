@@ -21,6 +21,17 @@
             "anchor": "#address-translation-and-firewalls"
         }
       ]
+    },
+    {
+      "id": "ufw-policy-evidence",
+      "question": "What does the documented `ufw status` snapshot show, and what does it not establish?",
+      "model_answer": "The snapshot shows a firewall rule allowing inbound TCP port 22 from the `192.168.0.0/24` subnet. It does not show that SSH is listening, that the route works, or that a particular connection is authorized.",
+      "evidence": [
+        {
+            "label": "Address translation and firewalls",
+            "anchor": "#address-translation-and-firewalls"
+        }
+      ]
     }
   ]
 }
