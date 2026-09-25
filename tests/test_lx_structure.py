@@ -85,6 +85,55 @@ CHECKPOINT_CODE_SOURCE = [
     "",
     "display_checkpoint_self_checks()",
 ]
+CHECKPOINT_TAIL = (
+        "## Checkpoint\n\n"
+        "Run the self-check in the next cell. Write or select a response before revealing the answer.\n"
+)
+PRESENTATION_STYLE = re.compile(
+    r"<style>\n"
+    r"\.lx-table \{\n"
+    r"\s+margin: 1\.5em auto;\n"
+    r"\s+text-align: left;\n"
+    r"\}\n\n"
+    r"\.lx-table caption \{\n"
+    r"\s+caption-side: top;\n"
+    r"\s+font-size: 0\.9em;\n"
+    r"\s+margin-bottom: 0\.6em;\n"
+    r"\s+text-align: center;\n"
+    r"\}\n\n"
+    r"\.lx-figure \{\n"
+    r"\s+margin: 1\.5em auto;\n"
+    r"\s+text-align: center;\n"
+    r"\}\n\n"
+    r"\.lx-figure figcaption \{\n"
+    r"\s+font-size: 0\.9em;\n"
+    r"\s+margin-top: 0\.6em;\n"
+    r"\s+text-align: center;\n"
+    r"\}\n\n"
+    r"table \{\n"
+    r"\s+margin: 0 auto 1\.5em;\n"
+    r"\}\n\n"
+    r"p:has\(> a\[id\^='table-'\]\) \{\n"
+    r"\s+margin: 0;\n"
+    r"\}\n\n"
+    r"p:has\(> a\[id\^='table-'\]\) \+ p,\n"
+    r"a\[id\^='table-'\] \+ p \{\n"
+    r"\s+font-size: 0\.9em;\n"
+    r"\s+margin: 1\.5em 0 0\.6em;\n"
+    r"\s+text-align: center;\n"
+    r"\}\n\n"
+    r"p\.lx-figure \{\n"
+    r"\s+margin: 1\.5em auto 0;\n"
+    r"\}\n\n"
+    r"p\.lx-figure \+ p \{\n"
+    r"\s+font-size: 0\.9em;\n"
+    r"\s+margin: 0\.6em 0 1\.5em;\n"
+    r"\s+text-align: center;\n"
+    r"\}\n</style>"
+)
+TABLE_PATTERN = re.compile(r"<table\b(?P<attrs>[^>]*)>.*?</table>", re.DOTALL)
+FIGURE_PATTERN = re.compile(r"<figure\b(?P<attrs>[^>]*)>.*?</figure>", re.DOTALL)
+CAPTION_PATTERN = re.compile(r"<(?:caption|figcaption)\b(?P<attrs>[^>]*)>")
 
 
 def vscode_heading_fragment(heading: str) -> str:
@@ -104,6 +153,33 @@ def checkpoint_data_path(notebook_relative_path: str) -> Path:
     _, separator, checkpoint_name = notebook_name.partition("-")
     assert separator and checkpoint_name
     return CHECKPOINT_DATA_DIR / f"{checkpoint_name}.json"
+
+
+def assert_markdown_ends_with_one_newline(cell: dict[str, object]) -> None:
+    """Require Markdown cell source to end without blank or space-only tails."""
+    source = cell["source"]
+    assert isinstance(source, list)
+    text = "".join(source)
+    assert text.endswith("\n")
+    assert not text.endswith("\n\n")
+    assert not text.endswith(" \n")
+
+
+def assert_final_checkpoint_tail(notebook: dict[str, object]) -> None:
+    """Require the standard final Further reading and checkpoint structure."""
+    cells = notebook["cells"]
+    assert isinstance(cells, list)
+    final_markdown = cells[-2]
+    assert isinstance(final_markdown, dict)
+    assert final_markdown["cell_type"] == "markdown"
+    source = final_markdown["source"]
+    assert isinstance(source, list)
+    text = "".join(source)
+    checkpoint_index = text.rfind("## Checkpoint\n")
+    assert checkpoint_index >= 0
+    assert text[checkpoint_index:] == CHECKPOINT_TAIL
+    headings = re.findall(r"(?m)^## .+$", text[:checkpoint_index])
+    assert headings[-1] == "## Further reading"
 
 
 def test_notebooks_directory_does_not_duplicate_shared_packages() -> None:
@@ -131,6 +207,8 @@ def test_notebook_cells_have_consistent_metadata() -> None:
             metadata_id = cell["metadata"].get("id")
             if metadata_id is not None:
                 assert cell["id"] == metadata_id
+            if cell["cell_type"] == "markdown":
+                assert_markdown_ends_with_one_newline(cell)
 
         markdown_cell = notebook["cells"][0]
         assert markdown_cell["cell_type"] == "markdown"
@@ -162,6 +240,40 @@ def test_notebook_cells_have_consistent_metadata() -> None:
             code_cell = notebook["cells"][1]
             assert code_cell["cell_type"] == "code"
             assert code_cell["metadata"]["language"] == "python"
+            assert_final_checkpoint_tail(notebook)
+
+
+def test_tables_and_figures_use_shared_presentation_style() -> None:
+    """Keep table and figure captions centered through shared CSS classes."""
+    styled_notebooks = 0
+    table_count = 0
+    figure_count = 0
+
+    for notebook_path in sorted(NOTEBOOK_DIR.glob("*.ipynb")):
+        notebook = json.loads(notebook_path.read_text(encoding="utf-8"))
+        markdown_source = "".join(notebook["cells"][0]["source"])
+        tables = TABLE_PATTERN.findall(markdown_source)
+        figures = FIGURE_PATTERN.findall(markdown_source)
+
+        if tables or figures:
+            styled_notebooks += 1
+            assert PRESENTATION_STYLE.search(markdown_source)
+        else:
+            assert "<style>" not in markdown_source
+
+        for attributes in tables:
+            assert 'class="lx-table"' in attributes
+        for attributes in figures:
+            assert 'class="lx-figure"' in attributes
+        for attributes in CAPTION_PATTERN.findall(markdown_source):
+            assert "style=" not in attributes
+
+        table_count += len(tables)
+        figure_count += len(figures)
+
+    assert styled_notebooks == 10
+    assert table_count == 10
+    assert figure_count == 15
 
 
 def test_numbered_notebook_references_are_individually_linked() -> None:
@@ -221,7 +333,6 @@ def assert_reveal_self_check(
         in markdown_source
     )
     assert ".checkpoint-source:target" not in markdown_source
-    assert "<style>" not in markdown_source
     assert "<mark>Checkpoint source</mark>" not in markdown_source
 
     found_checkpoint_ids = set()
