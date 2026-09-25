@@ -136,7 +136,14 @@ def test_notebook_cells_have_consistent_metadata() -> None:
         assert markdown_cell["cell_type"] == "markdown"
         assert markdown_cell["metadata"]["language"] == "markdown"
         markdown_source = "".join(markdown_cell["source"])
-        assert markdown_source.splitlines()[0] == expected_h1
+        logo_index = markdown_source.index('src="../assets/images/dtlogo.png"')
+        first_h1_index = markdown_source.index(expected_h1)
+        assert logo_index < first_h1_index
+
+        markdown_headings = [
+            line for line in markdown_source.splitlines() if line.startswith("# ")
+        ]
+        assert markdown_headings[0] == expected_h1
 
         if relative_path in HANDS_ON_NETWORKING_NOTEBOOKS:
             activity_headings = list(
