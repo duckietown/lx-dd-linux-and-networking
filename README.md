@@ -18,6 +18,10 @@ After completing this learning experience, learners will be able to:
 
 3. Distinguish a base-station shell, a physical Duckiedrone Secure Shell (SSH) shell, a virtual Duckiedrone shell, and a service shell. With explicit authorization, access one Duckiedrone and inspect its filesystem, processes, and running services without changing device state.
 
+## Run this learning experience
+
+Follow the Duckietown Manual's [LX General Instructions](https://docs.duckietown.com/ente/opmanual-dd24/50-learning-experiences/lx-general-procedure.html) to open this LX in a prepared environment. The notebooks provide the topic-specific activities; the prerequisites below describe the local setup.
+
 ## Notebooks
 
 Start with [Notebook 1](./notebooks/1-linux-foundations-and-distributions.ipynb), which establishes the core Linux concepts used throughout this LX. The remaining notebooks are ordered for the complete LX, but each has a focused orientation and checkpoint so it can be completed independently or used to focus on an individual concept.
@@ -47,7 +51,7 @@ Start with [Notebook 1](./notebooks/1-linux-foundations-and-distributions.ipynb)
 | 21 | [Notebook 21](./notebooks/21-network-names-and-service-discovery.ipynb) | Use DNS, mDNS, Uniform Resource Locators (URLs), discovery, and service availability evidence |
 | 22 | [Notebook 22](./notebooks/22-network-diagnostics-and-testing.ipynb) | Authorized local and Duckiedrone diagnostic checks |
 
-## What you need
+## Prerequisites
 
 Before starting this LX, complete the Duckietown Manual's [Initial Setup](https://docs.duckietown.com/ente/duckietown-manual/10-setup/setup-introduction.html) so Docker and the Duckietown Shell (`dts`) are installed and configured on the base station. This LX assumes that setup; explanations of Docker are deferred to the Docker LX.
 
