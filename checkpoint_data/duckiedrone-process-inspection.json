@@ -1,0 +1,26 @@
+{
+  "checkpoints": [
+    {
+      "id": "process-visibility",
+      "question": "What does `ps -ef` show when you run it from an authorized shell on a Duckiedrone?",
+      "model_answer": "It lists the processes visible to that shell on the Duckiedrone, rather than every process on the base station.",
+      "evidence": [
+        {
+          "label": "Inspect Duckiedrone services",
+          "anchor": "#inspect-duckiedrone-services"
+        }
+      ]
+    },
+    {
+      "id": "optional-platform-services",
+      "question": "Why is a missing optional sensor service not necessarily a platform failure?",
+      "model_answer": "Sensor, altitude, and visualization services can be selected during setup, so their absence alone does not prove a failure.",
+      "evidence": [
+        {
+          "label": "Inspect Duckiedrone services",
+          "anchor": "#inspect-duckiedrone-services"
+        }
+      ]
+    }
+  ]
+}

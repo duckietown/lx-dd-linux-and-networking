@@ -1,0 +1,37 @@
+{
+  "checkpoints": [
+    {
+      "id": "dhcp-address-change",
+      "question": "Why can a Duckiedrone's DHCP address change while its hostname remains useful?",
+      "model_answer": "DHCP leases an address for a period of time, so a reconnect or renewal can assign a new one. DNS or mDNS can resolve the hostname to the current address.",
+      "evidence": [
+        {
+            "label": "Automatic address configuration and private addresses",
+            "anchor": "#automatic-address-configuration-and-private-addresses"
+        }
+      ]
+    },
+    {
+      "id": "firewall-and-nat",
+      "question": "How does a firewall differ from NAT?",
+      "model_answer": "NAT translates addresses so multiple local devices can share a public IP address. A firewall applies traffic rules based on addresses, protocols, and ports.",
+      "evidence": [
+        {
+            "label": "Address translation and firewalls",
+            "anchor": "#address-translation-and-firewalls"
+        }
+      ]
+    },
+    {
+      "id": "ufw-policy-evidence",
+      "question": "What does the documented `ufw status` snapshot show, and what does it not establish?",
+      "model_answer": "The snapshot shows a firewall rule allowing inbound TCP port 22 from the `192.168.0.0/24` subnet. It does not show that SSH is listening, that the route works, or that a particular connection is authorized.",
+      "evidence": [
+        {
+            "label": "Address translation and firewalls",
+            "anchor": "#address-translation-and-firewalls"
+        }
+      ]
+    }
+  ]
+}
