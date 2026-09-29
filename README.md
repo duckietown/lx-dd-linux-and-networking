@@ -61,7 +61,7 @@ Your base station is the development computer that runs Visual Studio Code (VS C
 
 | Task | Where to run it |
 | --- | --- |
-| Read and edit notebooks; complete self-contained local exercises in the local-practice notebooks; run [Notebook 22](./notebooks/22-network-diagnostics-and-testing.ipynb) localhost examples | The `dts code editor` terminal or another local Linux environment chosen for this LX |
+| Read and edit notebooks; complete self-contained local exercises in the local-practice notebooks; run [Notebook 19](./notebooks/19-localhost-and-service-binding.ipynb)'s localhost exercise | The `dts code editor` terminal or another local Linux environment chosen for this LX |
 | Run `dts fleet discover`, `dts duckiebot virtual ...`, or physical-device `getent`, `ping`, `ssh`, and `ssh-copy-id` commands | A separate base-station terminal, outside `dts code editor` |
 | Inspect files, processes, routes, or sockets after connecting to a device | The authorized physical or virtual Duckiedrone shell |
 | Inspect a particular running service | The relevant service shell or workbench |
