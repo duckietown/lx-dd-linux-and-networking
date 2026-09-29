@@ -507,7 +507,7 @@ class CheckpointSelfCheck:
         )
         if choices is None:
             self.answer = widgets.Textarea(
-                placeholder="Write your answer here.",
+                placeholder="Write your answer here",
                 description="Your answer:",
                 rows=1,
                 layout=RESPONSE_LAYOUT,

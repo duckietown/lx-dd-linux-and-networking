@@ -30,6 +30,10 @@ DEFERRED_PLATFORM_TERM_PATTERN = re.compile(
     r"\b(?:docker\w*|containers?|ros\s*2)\b",
     re.IGNORECASE,
 )
+UNLINKED_NOTEBOOK_REFERENCE_PATTERN = re.compile(
+    r"(?<!\[)\bNotebooks?\s+\[?\d+",
+    re.IGNORECASE,
+)
 REQUIRED_NOTEBOOKS = {
     "notebooks/1-linux-foundations-and-distributions.ipynb": "# Linux Foundations and Distributions",
     "notebooks/2-linux-shell-and-navigation.ipynb": "# Linux Shell and Navigation",
@@ -43,18 +47,30 @@ REQUIRED_NOTEBOOKS = {
     "notebooks/10-users-ownership-and-permissions.ipynb": "# Users, Ownership, and Permissions",
     "notebooks/11-processes-monitoring-and-job-control.ipynb": "# Processes, Monitoring, and Job Control",
     "notebooks/12-shell-exercises-and-output-verification.ipynb": "# Shell Exercises and Output Verification",
-    "notebooks/13-network-addressing-and-routing.ipynb": "# Network Addressing and Routing",
-    "notebooks/14-network-protocols-and-quality.ipynb": "# Network Protocols and Quality",
-    "notebooks/15-localhost-and-service-binding.ipynb": "# Localhost and Service Binding",
-    "notebooks/16-network-configuration-and-access-policy.ipynb": "# Network Configuration and Access Policy",
-    "notebooks/17-network-names-and-service-discovery.ipynb": "# Network Names and Service Discovery",
-    "notebooks/18-network-diagnostics-and-testing.ipynb": "# Network Diagnostics and Testing",
-    "notebooks/19-physical-duckiedrone-ssh-access.ipynb": "# SSH Access to a Physical Duckiedrone",
-    "notebooks/20-virtual-duckiedrone-connections.ipynb": "# Virtual Duckiedrone Connections",
-    "notebooks/21-duckiedrone-filesystem-inspection.ipynb": "# Duckiedrone Filesystem Inspection",
-    "notebooks/22-duckiedrone-process-inspection.ipynb": "# Duckiedrone Process Inspection",
+    "notebooks/13-physical-duckiedrone-ssh-access.ipynb": "# Physical Duckiedrone Access",
+    "notebooks/14-virtual-duckiedrone-connections.ipynb": "# Virtual Duckiedrone Connections",
+    "notebooks/15-duckiedrone-filesystem-inspection.ipynb": "# Duckiedrone Filesystem Inspection",
+    "notebooks/16-duckiedrone-process-inspection.ipynb": "# Duckiedrone Process Inspection",
+    "notebooks/17-network-addressing-and-routing.ipynb": "# Network Addressing and Routing",
+    "notebooks/18-network-protocols-and-quality.ipynb": "# Network Protocols and Quality",
+    "notebooks/19-localhost-and-service-binding.ipynb": "# Localhost and Service Binding",
+    "notebooks/20-network-configuration-and-access-policy.ipynb": "# Network Configuration and Access Policy",
+    "notebooks/21-network-names-and-service-discovery.ipynb": "# Network Names and Service Discovery",
+    "notebooks/22-network-diagnostics-and-testing.ipynb": "# Network Diagnostics and Testing",
 }
 INTERACTIVE_CHECKPOINT_NOTEBOOKS = set(REQUIRED_NOTEBOOKS)
+HANDS_ON_NETWORKING_NOTEBOOKS = {
+    "notebooks/13-physical-duckiedrone-ssh-access.ipynb",
+    "notebooks/14-virtual-duckiedrone-connections.ipynb",
+    "notebooks/15-duckiedrone-filesystem-inspection.ipynb",
+    "notebooks/16-duckiedrone-process-inspection.ipynb",
+    "notebooks/17-network-addressing-and-routing.ipynb",
+    "notebooks/18-network-protocols-and-quality.ipynb",
+    "notebooks/19-localhost-and-service-binding.ipynb",
+    "notebooks/20-network-configuration-and-access-policy.ipynb",
+    "notebooks/21-network-names-and-service-discovery.ipynb",
+    "notebooks/22-network-diagnostics-and-testing.ipynb",
+}
 CHECKPOINT_CODE_SOURCE = [
     "import sys",
     "from pathlib import Path",
@@ -69,6 +85,55 @@ CHECKPOINT_CODE_SOURCE = [
     "",
     "display_checkpoint_self_checks()",
 ]
+CHECKPOINT_TAIL = (
+        "## Checkpoint\n\n"
+        "Run the self-check in the next cell. Write or select a response before revealing the answer.\n"
+)
+PRESENTATION_STYLE = re.compile(
+    r"<style>\n"
+    r"\.lx-table \{\n"
+    r"\s+margin: 1\.5em auto;\n"
+    r"\s+text-align: left;\n"
+    r"\}\n\n"
+    r"\.lx-table caption \{\n"
+    r"\s+caption-side: top;\n"
+    r"\s+font-size: 0\.9em;\n"
+    r"\s+margin-bottom: 0\.6em;\n"
+    r"\s+text-align: center;\n"
+    r"\}\n\n"
+    r"\.lx-figure \{\n"
+    r"\s+margin: 1\.5em auto;\n"
+    r"\s+text-align: center;\n"
+    r"\}\n\n"
+    r"\.lx-figure figcaption \{\n"
+    r"\s+font-size: 0\.9em;\n"
+    r"\s+margin-top: 0\.6em;\n"
+    r"\s+text-align: center;\n"
+    r"\}\n\n"
+    r"table \{\n"
+    r"\s+margin: 0 auto 1\.5em;\n"
+    r"\}\n\n"
+    r"p:has\(> a\[id\^='table-'\]\) \{\n"
+    r"\s+margin: 0;\n"
+    r"\}\n\n"
+    r"p:has\(> a\[id\^='table-'\]\) \+ p,\n"
+    r"a\[id\^='table-'\] \+ p \{\n"
+    r"\s+font-size: 0\.9em;\n"
+    r"\s+margin: 1\.5em 0 0\.6em;\n"
+    r"\s+text-align: center;\n"
+    r"\}\n\n"
+    r"p\.lx-figure \{\n"
+    r"\s+margin: 1\.5em auto 0;\n"
+    r"\}\n\n"
+    r"p\.lx-figure \+ p \{\n"
+    r"\s+font-size: 0\.9em;\n"
+    r"\s+margin: 0\.6em 0 1\.5em;\n"
+    r"\s+text-align: center;\n"
+    r"\}\n</style>"
+)
+TABLE_PATTERN = re.compile(r"<table\b(?P<attrs>[^>]*)>.*?</table>", re.DOTALL)
+FIGURE_PATTERN = re.compile(r"<figure\b(?P<attrs>[^>]*)>.*?</figure>", re.DOTALL)
+CAPTION_PATTERN = re.compile(r"<(?:caption|figcaption)\b(?P<attrs>[^>]*)>")
 
 
 def vscode_heading_fragment(heading: str) -> str:
@@ -90,6 +155,33 @@ def checkpoint_data_path(notebook_relative_path: str) -> Path:
     return CHECKPOINT_DATA_DIR / f"{checkpoint_name}.json"
 
 
+def assert_markdown_ends_with_one_newline(cell: dict[str, object]) -> None:
+    """Require Markdown cell source to end without blank or space-only tails."""
+    source = cell["source"]
+    assert isinstance(source, list)
+    text = "".join(source)
+    assert text.endswith("\n")
+    assert not text.endswith("\n\n")
+    assert not text.endswith(" \n")
+
+
+def assert_final_checkpoint_tail(notebook: dict[str, object]) -> None:
+    """Require the standard final Further reading and checkpoint structure."""
+    cells = notebook["cells"]
+    assert isinstance(cells, list)
+    final_markdown = cells[-2]
+    assert isinstance(final_markdown, dict)
+    assert final_markdown["cell_type"] == "markdown"
+    source = final_markdown["source"]
+    assert isinstance(source, list)
+    text = "".join(source)
+    checkpoint_index = text.rfind("## Checkpoint\n")
+    assert checkpoint_index >= 0
+    assert text[checkpoint_index:] == CHECKPOINT_TAIL
+    headings = re.findall(r"(?m)^## .+$", text[:checkpoint_index])
+    assert headings[-1] == "## Further reading"
+
+
 def test_notebooks_directory_does_not_duplicate_shared_packages() -> None:
     """Keep shared code in the LX-level packages directory only."""
     notebook_packages_path = NOTEBOOK_DIR / "packages"
@@ -108,24 +200,102 @@ def test_notebook_cells_have_consistent_metadata() -> None:
         notebook_path = ROOT / relative_path
         notebook = json.loads(notebook_path.read_text(encoding="utf-8"))
         assert notebook["nbformat"] == 4
-        expected_cell_count = (
-            2 if relative_path in INTERACTIVE_CHECKPOINT_NOTEBOOKS else 1
-        )
-        assert len(notebook["cells"]) == expected_cell_count
+        assert len(notebook["cells"]) == 2
 
         for cell in notebook["cells"]:
             assert isinstance(cell.get("id"), str) and cell["id"]
-            assert cell["id"] == cell["metadata"]["id"]
+            metadata_id = cell["metadata"].get("id")
+            if metadata_id is not None:
+                assert cell["id"] == metadata_id
+            if cell["cell_type"] == "markdown":
+                assert_markdown_ends_with_one_newline(cell)
 
         markdown_cell = notebook["cells"][0]
         assert markdown_cell["cell_type"] == "markdown"
         assert markdown_cell["metadata"]["language"] == "markdown"
-        assert "".join(markdown_cell["source"]).splitlines()[0] == expected_h1
+        markdown_source = "".join(markdown_cell["source"])
+        logo_index = markdown_source.index('src="../assets/images/dtlogo.png"')
+        first_h1_index = markdown_source.index(expected_h1)
+        assert logo_index < first_h1_index
+
+        markdown_headings = [
+            line for line in markdown_source.splitlines() if line.startswith("# ")
+        ]
+        assert markdown_headings[0] == expected_h1
+
+        if relative_path in HANDS_ON_NETWORKING_NOTEBOOKS:
+            activity_headings = list(
+                re.finditer(r"^### Try it(?:[: ].*)?$", markdown_source, re.MULTILINE)
+            )
+            assert activity_headings
+            checkpoint_index = markdown_source.index("## Checkpoint")
+            assert all(
+                activity_heading.start() < checkpoint_index
+                for activity_heading in activity_headings
+            )
+            assert markdown_source.count("<details>") >= len(activity_headings)
+            assert markdown_source.count("</details>") >= len(activity_headings)
 
         if relative_path in INTERACTIVE_CHECKPOINT_NOTEBOOKS:
             code_cell = notebook["cells"][1]
             assert code_cell["cell_type"] == "code"
             assert code_cell["metadata"]["language"] == "python"
+            assert_final_checkpoint_tail(notebook)
+
+
+def test_tables_and_figures_use_shared_presentation_style() -> None:
+    """Keep table and figure captions centered through shared CSS classes."""
+    styled_notebooks = 0
+    table_count = 0
+    figure_count = 0
+
+    for notebook_path in sorted(NOTEBOOK_DIR.glob("*.ipynb")):
+        notebook = json.loads(notebook_path.read_text(encoding="utf-8"))
+        markdown_source = "".join(notebook["cells"][0]["source"])
+        tables = TABLE_PATTERN.findall(markdown_source)
+        figures = FIGURE_PATTERN.findall(markdown_source)
+
+        if tables or figures:
+            styled_notebooks += 1
+            assert PRESENTATION_STYLE.search(markdown_source)
+        else:
+            assert "<style>" not in markdown_source
+
+        for attributes in tables:
+            assert 'class="lx-table"' in attributes
+        for attributes in figures:
+            assert 'class="lx-figure"' in attributes
+        for attributes in CAPTION_PATTERN.findall(markdown_source):
+            assert "style=" not in attributes
+
+        table_count += len(tables)
+        figure_count += len(figures)
+
+    assert styled_notebooks == 10
+    assert table_count == 10
+    assert figure_count == 15
+
+
+def test_numbered_notebook_references_are_individually_linked() -> None:
+    """Keep numbered course references direct and individually actionable."""
+    readme_source = README_PATH.read_text(encoding="utf-8")
+    learner_sources = {README_PATH: readme_source}
+
+    for relative_path in REQUIRED_NOTEBOOKS:
+        notebook_path = ROOT / relative_path
+        notebook = json.loads(notebook_path.read_text(encoding="utf-8"))
+        markdown_source = "".join(notebook["cells"][0]["source"])
+        learner_sources[notebook_path] = markdown_source
+
+        notebook_name = Path(relative_path).name
+        notebook_number = notebook_name.partition("-")[0]
+        expected_link = f"[Notebook {notebook_number}](./{relative_path})"
+        assert expected_link in readme_source
+
+    for learner_path, learner_source in learner_sources.items():
+        assert (
+            UNLINKED_NOTEBOOK_REFERENCE_PATTERN.search(learner_source) is None
+        ), learner_path
 
 
 def test_teaching_material_defers_later_platform_topics() -> None:
@@ -150,7 +320,7 @@ def assert_reveal_self_check(
     notebook_path = ROOT / notebook_relative_path
     notebook = json.loads(notebook_path.read_text(encoding="utf-8"))
     markdown_source = "".join(notebook["cells"][0]["source"])
-    code_source = "".join(notebook["cells"][1]["source"])
+    code_source = "".join(notebook["cells"][-1]["source"])
     notebook_source = markdown_source + code_source
     checkpoint_data = json.loads(checkpoint_path.read_text(encoding="utf-8"))
 
@@ -163,7 +333,6 @@ def assert_reveal_self_check(
         in markdown_source
     )
     assert ".checkpoint-source:target" not in markdown_source
-    assert "<style>" not in markdown_source
     assert "<mark>Checkpoint source</mark>" not in markdown_source
 
     found_checkpoint_ids = set()
@@ -936,7 +1105,7 @@ def test_readme_documents_test_and_checkpoint_requirements() -> None:
 def test_virtual_and_filesystem_guidance_stays_safe() -> None:
     """Keep virtual shutdown and filesystem-output safety explicit."""
     virtual_notebook_path = (
-        NOTEBOOK_DIR / "20-virtual-duckiedrone-connections.ipynb"
+        NOTEBOOK_DIR / "14-virtual-duckiedrone-connections.ipynb"
     )
     virtual_notebook_contents = virtual_notebook_path.read_text(
         encoding="utf-8"
@@ -948,7 +1117,7 @@ def test_virtual_and_filesystem_guidance_stays_safe() -> None:
     assert "dts duckiebot virtual stop DUCKIEDRONE_NAME" in virtual_source
 
     filesystem_notebook_path = (
-        NOTEBOOK_DIR / "21-duckiedrone-filesystem-inspection.ipynb"
+        NOTEBOOK_DIR / "15-duckiedrone-filesystem-inspection.ipynb"
     )
     filesystem_notebook_contents = filesystem_notebook_path.read_text(
         encoding="utf-8"

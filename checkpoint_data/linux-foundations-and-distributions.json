@@ -59,12 +59,12 @@
     },
     {
       "id": "current-environment-scope",
-      "question": "What do `uname -m` and `cat /etc/os-release` describe, and why are they not needed to identify a Duckiedrone platform in this LX?",
-      "model_answer": "They report the architecture and distribution information for the current shell context, which can differ between base-station, editor, and service environments. The Duckiedrone platform used in this LX is already known.",
+      "question": "What does an environment report describe, and why does it not identify every environment in a Duckiedrone workflow?",
+      "model_answer": "It describes the architecture, distribution, and release of the environment where it was collected. A base station, browser editor, isolated service environment, and Duckiedrone can be separate environments with different values, so the report distinguishes the current context rather than identifying every platform or rediscovering the device.",
       "evidence": [
         {
-          "label": "Inspect the current environment",
-          "anchor": "#inspect-the-current-environment"
+          "label": "Interpret environment information",
+          "anchor": "#interpret-environment-information"
         }
       ]
     }
