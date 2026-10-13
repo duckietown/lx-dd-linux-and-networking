@@ -20,6 +20,11 @@ jobs:
           echo "📌 PR Title:  $TITLE"
           echo "📌 Branch:    $BRANCH"
 
+          if [[ "$BRANCH" == sync/from-official-* ]]; then
+            echo "✅ Automated sync branch from the solution repo, Jira key not required."
+            exit 0
+          fi
+
           TITLE_OK=$(echo "$TITLE" | grep -E "$JIRA_PATTERN" || true)
           BRANCH_OK=$(echo "$BRANCH" | grep -E "$JIRA_PATTERN" || true)
 
