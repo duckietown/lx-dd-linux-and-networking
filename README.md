@@ -57,11 +57,27 @@ Before starting this LX, complete the Duckietown Manual's [Initial Setup](https:
 
 Your base station is the development computer that runs Visual Studio Code (VS Code), Docker, and `dts`. `dts code editor` starts a separate browser-editor environment from a base-station terminal. Its terminal, filesystem, and `localhost` are separate from the base station.
 
+To use the Linux and networking tools supplied by this LX, run `dts code editor` from a base-station terminal in the LX directory. In the browser editor, choose __Terminal > New Terminal__. Run the local tool examples there, and open additional exercise terminals through the same menu.
+
+Alternatively, build and open the LX runtime from a base-station terminal. From the directory containing your LX checkout, run:
+
+```bash
+cd lx-dd-linux-and-networking
+dts code build --local --username duckietown
+dts devel run --username duckietown --cmd bash
+```
+
+Run the local tool examples in the resulting runtime-container shell. For another shell in the same running container, open a second base-station terminal, change to the same LX directory, and run:
+
+```bash
+dts devel run attach
+```
+
 ### Choose the terminal
 
 | Task | Where to run it |
 | --- | --- |
-| Read and edit notebooks; complete self-contained local exercises in the local-practice notebooks; run [Notebook 22](./notebooks/22-network-diagnostics-and-testing.ipynb) localhost examples | The `dts code editor` terminal or another local Linux environment chosen for this LX |
+| Read and edit notebooks; complete self-contained local exercises in the local-practice notebooks; run [Notebook 22](./notebooks/22-network-diagnostics-and-testing.ipynb) localhost examples | The `dts code editor` terminal, the LX runtime-container shell, or another local Linux environment chosen for this LX |
 | Run `dts fleet discover`, `dts duckiebot virtual ...`, or physical-device `getent`, `ping`, `ssh`, and `ssh-copy-id` commands | A separate base-station terminal, outside `dts code editor` |
 | Inspect files, processes, routes, or sockets after connecting to a device | The authorized physical or virtual Duckiedrone shell |
 | Inspect a particular running service | The relevant service shell or workbench |
@@ -73,6 +89,16 @@ Keep the base-station terminal open while using the browser editor. A command's 
 The shell commands in the local-practice notebooks run in any of those local Linux environments. They need a terminal and the LX files only; no Duckiedrone or network access is required. Interactive checkpoints require the notebook metadata supplied by `dts code editor`; a compatible Jupyter/IPython kernel with `ipywidgets` available is not sufficient by itself.
 
 ### Networking
+
+The supplied browser-editor and LX runtime images include `curl`, `htop`, `ip` and `ss` (from `iproute2`), `ping` (from `iputils-ping`), `nc` (from `netcat-openbsd`), and `ssh` and `ssh-copy-id` (from `openssh-client`). Check their availability in your chosen exercise terminal before running the examples:
+
+```bash
+command -v curl htop ip ss ping nc ssh ssh-copy-id
+```
+
+Each command name should produce a path. If you choose another Linux environment, install any missing tools there using its package manager. The tools installed in the exercise images are not automatically installed on the base station.
+
+Use these tools in the chosen exercise terminal for local practice. In the browser editor, `ip`, `ss`, and `htop` describe the editor container's network or process view, not the base station's. Run each localhost example's server and client in the same exercise environment.
 
 Start with either authorized physical access in [Notebook 13](./notebooks/13-physical-duckiedrone-ssh-access.ipynb) or the local virtual workflow in [Notebook 14](./notebooks/14-virtual-duckiedrone-connections.ipynb). Then use [Notebook 15](./notebooks/15-duckiedrone-filesystem-inspection.ipynb) and [Notebook 16](./notebooks/16-duckiedrone-process-inspection.ipynb) to orient yourself in the authorized Duckiedrone shell before continuing to network concepts. [Notebook 22](./notebooks/22-network-diagnostics-and-testing.ipynb)'s localhost examples are safe in the local Linux environment you chose. Run `dts fleet discover` and checks that need the base station's network path from the separate base-station terminal. Once `ssh` or `dts duckiebot virtual connect` opens a Duckiedrone shell, `localhost`, processes, routes, and sockets describe that Duckiedrone rather than the editor or base station.
 
